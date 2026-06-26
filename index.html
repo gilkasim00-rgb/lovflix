@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  LOVFLIX — Bibin & Ayang                                         ║
+  ║                                                                  ║
+  ║  GITHUB PAGES DEPLOYMENT                                         ║
+  ║  1. Create new GitHub repo (e.g. "lovflix")                      ║
+  ║  2. Upload this file as: index.html                              ║
+  ║  3. Create a "photos" folder in the repo                         ║
+  ║  4. Upload all your photos into the photos/ folder               ║
+  ║  5. Settings > Pages > Deploy from main branch                   ║
+  ║  6. Share: https://yourusername.github.io/lovflix                ║
+  ║                                                                  ║
+  ║  HOW TO ADD LOCAL PHOTOS                                         ║
+  ║  - Put photos in the photos/ folder next to index.html           ║
+  ║  - Click any card, type the filename: photos/biny.jpg            ║
+  ║  - Click Save — done!                                            ║
+  ║                                                                  ║
+  ║  PHOTO FILENAME GUIDE (suggested names):                         ║
+  ║  Hero banner    → photos/hero.jpg                                ║
+  ║  Featured banner→ photos/christmas.jpg                           ║
+  ║  n1  We Matched             → photos/we-matched.jpg              ║
+  ║  n2  First Date             → photos/first-date.jpg              ║
+  ║  d1  Biny Is Born           → photos/biny.jpg                    ║
+  ║  d2  First Photobooth       → photos/photobooth-1.jpg            ║
+  ║  d3  Her Birthday/First Kiss→ photos/birthday-kiss.jpg           ║
+  ║  d4  New Year's Eve         → photos/new-year.jpg                ║
+  ║  j1  Pizza Making Class     → photos/pizza-class.jpg             ║
+  ║  j2  Ice Skating Date       → photos/ice-skating-1.jpg           ║
+  ║  j3  Second Photobooth      → photos/photobooth-2.jpg            ║
+  ║  f1  She Was Hospitalized   → photos/hospital.jpg                ║
+  ║  f2  First Valentine        → photos/valentine.jpg               ║
+  ║  f3  Roller Skate Date      → photos/roller-skate.jpg            ║
+  ║  f4  Terrarium Date         → photos/terrarium.jpg               ║
+  ║  m1  Gym Together           → photos/gym.jpg                     ║
+  ║  m2  Scooter & Robots       → photos/scooter-robots.jpg          ║
+  ║  m3  Go Kart                → photos/go-kart.jpg                 ║
+  ║  m4  Third Photobooth       → photos/photobooth-3.jpg            ║
+  ║  a1  Dufan Road Trip        → photos/dufan.jpg                   ║
+  ║  a2  Sushiro Date           → photos/sushiro.jpg                 ║
+  ║  mj1 Ice Skating Again      → photos/ice-skating-2.jpg           ║
+  ║  mj2 Another Photobooth     → photos/photobooth-4.jpg            ║
+  ║  mj3 First Trip — Jogja     → photos/jogja.jpg                   ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOVFLIX — Bibin & Ayang</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;--dark:#141414;--card:#1f1f1f;
+  --red:#e50914;--pink:#ff6b9d;--pink-glow:rgba(255,107,157,0.35);
+  --white:#fff;--grey:#808080;--light:#b3b3b3;
+  --font-d:'Bebas Neue',sans-serif;--font-b:'Inter',sans-serif;--font-s:'Playfair Display',serif;
+  --cw:185px;--ch:104px;--r:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--white);font-family:var(--font-b);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:#111;}
+::-webkit-scrollbar-thumb{background:#333;border-radius:2px;}
+
+/* ── NAVBAR ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:64px;padding:0 4%;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s;}
+.nav.scrolled{background:var(--black);}
+.nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.85),transparent);pointer-events:none;}
+.nav-logo{font-family:var(--font-d);font-size:2rem;letter-spacing:3px;color:var(--pink);text-shadow:0 0 28px var(--pink-glow);position:relative;z-index:1;cursor:default;user-select:none;line-height:1;}
+.nav-logo small{display:block;font-family:var(--font-b);font-size:0.55rem;font-weight:400;letter-spacing:5px;color:rgba(255,255,255,0.4);margin-top:1px;}
+.nav-r{display:flex;align-items:center;gap:18px;position:relative;z-index:1;}
+.nav-lnk{color:var(--light);font-size:0.8rem;cursor:pointer;transition:color 0.2s;}
+.nav-lnk:hover{color:var(--white);}
+.nav-av{width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,#ff6b9d,#ffb3cf);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s;}
+.nav-av:hover{border-color:var(--white);}
+.music-pill{display:flex;align-items:center;gap:7px;background:rgba(255,107,157,0.12);border:1px solid rgba(255,107,157,0.3);border-radius:20px;padding:4px 12px 4px 8px;cursor:pointer;transition:background 0.2s;}
+.music-pill:hover{background:rgba(255,107,157,0.22);}
+.music-dot{width:7px;height:7px;border-radius:50%;background:var(--pink);animation:mdot 1.5s ease-in-out infinite;}
+@keyframes mdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+.music-lbl{font-size:0.68rem;color:#ffb3d0;letter-spacing:0.5px;}
+
+/* ── MUSIC GATE ── */
+.gate{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
+.gate-logo{font-family:var(--font-d);font-size:clamp(3rem,10vw,6rem);color:var(--pink);text-shadow:0 0 60px var(--pink-glow);letter-spacing:4px;margin-bottom:6px;}
+.gate-sub{font-size:0.7rem;letter-spacing:6px;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:2.5rem;}
+.gate-names{font-family:var(--font-s);font-style:italic;font-size:clamp(1rem,3vw,1.4rem);color:rgba(255,255,255,0.6);margin-bottom:2.5rem;}
+.gate-btn{background:var(--pink);color:#fff;border:none;border-radius:50px;padding:1rem 3rem;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:var(--font-b);box-shadow:0 4px 30px rgba(255,107,157,0.5);letter-spacing:0.5px;transition:all 0.2s;}
+.gate-btn:hover{background:#ff4d8a;transform:scale(1.04);}
+.gate-vol{font-size:0.7rem;color:rgba(255,255,255,0.25);margin-top:1rem;letter-spacing:1px;}
+
+/* ── HERO ── */
+.hero{position:relative;width:100%;height:100vh;min-height:580px;display:flex;align-items:flex-end;padding:0 4% 9%;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-ph{position:absolute;inset:0;background:linear-gradient(135deg,#1a0814 0%,#2a0e22 35%,#0e1428 70%,#0a0a14 100%);}
+.hero-ph-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:0.05;letter-spacing:16px;animation:breathe 4s ease-in-out infinite;user-select:none;}
+@keyframes breathe{0%,100%{opacity:0.03;}50%{opacity:0.08;}}
+.hero-di{position:absolute;inset:0;background-size:cover;background-position:center top;opacity:0;transition:opacity 1s;}
+.hero-di.on{opacity:1;}
+.hero-fd{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,0.95) 0%,rgba(10,10,10,0.65) 45%,rgba(10,10,10,0.1) 70%,transparent 100%),linear-gradient(to top,rgba(10,10,10,1) 0%,rgba(10,10,10,0.55) 18%,transparent 50%);}
+.hero-c{position:relative;z-index:2;max-width:540px;}
+.hero-ey{font-size:0.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--pink);margin-bottom:11px;font-weight:500;}
+.hero-t{font-family:var(--font-d);font-size:clamp(2.8rem,7vw,5.5rem);line-height:0.93;letter-spacing:2px;margin-bottom:14px;text-shadow:2px 2px 20px rgba(0,0,0,0.8);}
+.hero-t em{color:var(--pink);font-style:normal;}
+.hero-mt{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:0.8rem;flex-wrap:wrap;}
+.hero-match{color:#46d369;font-weight:600;}
+.hero-tag{border:1px solid rgba(255,255,255,0.28);padding:1px 7px;border-radius:3px;font-size:0.7rem;color:var(--light);}
+.hero-desc{font-family:var(--font-s);font-style:italic;font-size:0.9rem;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:22px;max-width:460px;}
+.hero-btns{display:flex;gap:9px;flex-wrap:wrap;}
+.hbtn{display:inline-flex;align-items:center;gap:7px;padding:0.65rem 1.7rem;border-radius:4px;font-size:0.92rem;font-weight:600;cursor:pointer;transition:all 0.2s;border:none;font-family:var(--font-b);}
+.hbtn-p{background:var(--white);color:var(--black);}
+.hbtn-p:hover{background:rgba(255,255,255,0.85);}
+.hbtn-i{background:rgba(109,109,110,0.65);color:var(--white);}
+.hbtn-i:hover{background:rgba(109,109,110,0.9);}
+.hero-chg{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.65);color:var(--light);border:1px solid rgba(255,255,255,0.15);border-radius:4px;padding:3px 10px;font-size:0.68rem;cursor:pointer;font-family:var(--font-b);transition:all 0.2s;z-index:10;}
+.hero-chg:hover{background:rgba(255,255,255,0.12);color:var(--white);}
+
+/* ── ROWS ── */
+.rows{position:relative;z-index:2;padding:0 0 60px;margin-top:-80px;}
+.row{margin-bottom:4px;padding:14px 0;}
+.row-hd{padding:0 4%;display:flex;align-items:baseline;gap:10px;margin-bottom:10px;}
+.row-ttl{font-size:1.1rem;font-weight:600;color:var(--light);transition:color 0.2s;cursor:default;}
+.row:hover .row-ttl{color:var(--white);}
+.row-exp{font-size:0.72rem;color:#54b9c5;cursor:pointer;opacity:0;transition:opacity 0.2s;display:flex;align-items:center;gap:3px;}
+.row:hover .row-exp{opacity:1;}
+.sl-wrap{position:relative;}
+.sl-vp{overflow-x:auto;overflow-y:visible;padding:10px 4% 22px;scrollbar-width:none;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;}
+.sl-vp::-webkit-scrollbar{display:none;}
+.sl-tr{display:flex;gap:5px;width:max-content;}
+.sl-arr{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:100%;background:rgba(10,10,10,0.7);border:none;color:var(--white);font-size:1.5rem;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;pointer-events:none;}
+.sl-arr:hover{background:rgba(10,10,10,0.92);}
+.sl-arr.l{left:0;border-radius:0 4px 4px 0;}
+.sl-arr.r{right:0;border-radius:4px 0 0 4px;}
+.sl-wrap:hover .sl-arr{opacity:1;pointer-events:all;}
+
+/* ── CARD ── */
+.card{width:var(--cw);flex-shrink:0;position:relative;border-radius:var(--r);overflow:visible;scroll-snap-align:start;cursor:pointer;transform-origin:center bottom;transition:transform 0.25s ease,z-index 0s 0.25s;z-index:1;}
+.card:hover{transform:scale(1.34);z-index:100;transition:transform 0.25s ease,z-index 0s;}
+.card:first-child:hover{transform-origin:left bottom;}
+.card:last-child:hover{transform-origin:right bottom;}
+.card-th{width:100%;height:var(--ch);border-radius:var(--r);overflow:hidden;position:relative;background:var(--card);}
+.card-th::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 55%);pointer-events:none;}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;}
+.card-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative;}
+.card-ph-em{font-size:1.9rem;line-height:1;}
+.card-ph-dt{position:absolute;bottom:6px;left:8px;font-size:0.58rem;color:rgba(255,255,255,0.45);font-weight:500;letter-spacing:0.3px;}
+.card-ph-lbl{font-size:0.55rem;color:#444;letter-spacing:0.5px;text-transform:uppercase;}
+.prog-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.08);}
+.prog-fill{height:100%;background:var(--red);}
+.card-pnl{position:absolute;top:100%;left:0;right:0;background:#202020;border-radius:0 0 var(--r) var(--r);padding:9px 11px 11px;opacity:0;pointer-events:none;transition:opacity 0.18s;box-shadow:0 8px 28px rgba(0,0,0,0.85);z-index:101;}
+.card:hover .card-pnl{opacity:1;pointer-events:all;}
+.cpb-row{display:flex;align-items:center;gap:5px;margin-bottom:7px;}
+.cpb{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,0.45);background:transparent;color:var(--white);display:flex;align-items:center;justify-content:center;font-size:0.8rem;cursor:pointer;transition:all 0.15s;}
+.cpb:hover{border-color:var(--white);background:rgba(255,255,255,0.08);}
+.cpb.play{background:var(--white);border-color:var(--white);color:var(--black);}
+.cpb.hrt{border-color:var(--pink);color:var(--pink);}
+.cpb-t{font-size:0.74rem;font-weight:600;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cpb-mt{display:flex;gap:5px;font-size:0.64rem;color:var(--light);margin-bottom:4px;}
+.cpb-mt .m{color:#46d369;font-weight:600;}
+.cpb-d{font-size:0.65rem;color:var(--light);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+/* top 10 */
+.t10-n{position:absolute;left:-16px;bottom:-6px;font-family:var(--font-d);font-size:4.5rem;line-height:1;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,0.12);z-index:0;user-select:none;}
+.card:hover .t10-n{opacity:0.04;}
+
+/* ── FEATURED BANNER ── */
+.feat{margin:18px 4%;border-radius:8px;overflow:hidden;position:relative;height:270px;cursor:pointer;}
+.feat-ph{position:absolute;inset:0;background:linear-gradient(135deg,#200a1a,#0e1428);display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:0.07;}
+.feat-di{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 0.8s;}
+.feat-di.on{opacity:1;}
+.feat-fd{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.92) 30%,rgba(0,0,0,0.25) 75%,rgba(0,0,0,0.45) 100%);}
+.feat-c{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 5%;max-width:480px;}
+.feat-lbl{font-size:0.62rem;letter-spacing:4px;color:var(--pink);text-transform:uppercase;margin-bottom:7px;font-weight:500;}
+.feat-t{font-family:var(--font-d);font-size:clamp(1.7rem,4vw,2.7rem);letter-spacing:1px;margin-bottom:7px;}
+.feat-d{font-size:0.8rem;color:var(--light);line-height:1.6;margin-bottom:12px;font-family:var(--font-s);font-style:italic;}
+.feat-btn{display:inline-flex;align-items:center;gap:6px;background:var(--pink);color:#fff;border:none;border-radius:4px;padding:0.48rem 1.2rem;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:var(--font-b);width:fit-content;transition:background 0.2s;}
+.feat-btn:hover{background:#ff4d8a;}
+
+/* ── GENRE PILLS ── */
+.genre-bar{display:flex;gap:7px;flex-wrap:wrap;padding:0 4% 16px;}
+.gp{padding:4px 13px;border-radius:20px;border:1px solid rgba(255,255,255,0.18);font-size:0.72rem;color:var(--light);cursor:pointer;transition:all 0.18s;background:transparent;font-family:var(--font-b);}
+.gp:hover,.gp.on{background:var(--white);color:var(--black);border-color:var(--white);font-weight:600;}
+
+/* ── MODAL ── */
+.mo{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.88);align-items:center;justify-content:center;padding:1rem;}
+.mo.open{display:flex;}
+.mb{background:#141414;border-radius:8px;max-width:820px;width:100%;max-height:92vh;overflow-y:auto;position:relative;box-shadow:0 20px 80px rgba(0,0,0,0.95);}
+.mb-hero{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border-radius:8px 8px 0 0;background:#0a0a0a;}
+.mb-hi{width:100%;height:100%;object-fit:cover;display:block;}
+.mb-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;}
+.mb-fd{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,#141414,transparent);}
+.mb-x{position:absolute;top:11px;right:11px;width:34px;height:34px;border-radius:50%;background:rgba(20,20,20,0.8);border:2px solid rgba(255,255,255,0.25);color:var(--white);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;z-index:10;}
+.mb-x:hover{background:rgba(255,255,255,0.18);}
+.mb-body{padding:1.4rem 1.8rem 1.8rem;}
+.mb-title{font-family:var(--font-d);font-size:2rem;letter-spacing:1px;margin-bottom:7px;}
+.mb-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:0.8rem;flex-wrap:wrap;}
+.mb-match{color:#46d369;font-weight:600;}
+.mb-yr{color:var(--light);}
+.mb-tag{border:1px solid rgba(255,255,255,0.25);padding:1px 8px;border-radius:3px;font-size:0.7rem;color:var(--light);}
+.mb-desc{font-family:var(--font-s);font-style:italic;font-size:0.92rem;color:rgba(255,255,255,0.88);line-height:1.75;margin-bottom:18px;}
+.mb-btns{display:flex;gap:9px;margin-bottom:18px;flex-wrap:wrap;}
+.mbbtn{display:inline-flex;align-items:center;gap:7px;padding:0.58rem 1.4rem;border-radius:4px;font-size:0.88rem;font-weight:600;cursor:pointer;transition:all 0.2s;border:none;font-family:var(--font-b);}
+.mbbtn-p{background:var(--white);color:var(--black);}
+.mbbtn-p:hover{background:rgba(255,255,255,0.85);}
+.mbbtn-l{background:rgba(109,109,110,0.45);color:var(--white);border:2px solid rgba(255,255,255,0.25);}
+.mbbtn-l:hover{background:rgba(109,109,110,0.75);}
+.mb-rep{border-top:1px solid rgba(255,255,255,0.07);padding-top:14px;margin-top:2px;}
+.mb-rep-t{font-size:0.7rem;color:var(--grey);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;}
+.url-row{display:flex;gap:7px;}
+.url-in{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:0.5rem 0.9rem;color:var(--white);font-size:0.82rem;font-family:var(--font-b);outline:none;transition:border-color 0.2s;}
+.url-in::placeholder{color:#444;}
+.url-in:focus{border-color:var(--pink);}
+.url-go{background:var(--pink);color:#fff;border:none;border-radius:4px;padding:0.5rem 1.1rem;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:var(--font-b);transition:background 0.2s;white-space:nowrap;}
+.url-go:hover{background:#ff4d8a;}
+.url-hint{font-size:0.67rem;color:#444;margin-top:5px;line-height:1.55;}
+
+/* ── FOOTER ── */
+.footer{padding:36px 4% 28px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;}
+.footer-em{font-size:1.4rem;margin-bottom:7px;}
+.footer-t{font-size:0.75rem;color:#383838;line-height:1.8;}
+.footer-t b{color:#555;}
+
+/* ── EDIT TIP ── */
+.tip{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(18,18,18,0.96);border:1px solid rgba(255,107,157,0.28);border-radius:40px;padding:9px 18px;display:flex;align-items:center;gap:10px;z-index:500;font-size:0.72rem;color:var(--light);box-shadow:0 4px 20px rgba(0,0,0,0.5);backdrop-filter:blur(10px);}
+.tip-dot{width:7px;height:7px;border-radius:50%;background:var(--pink);animation:mdot 2s ease-in-out infinite;}
+.tip-x{background:none;border:none;color:#444;cursor:pointer;font-size:0.95rem;padding:0 0 0 4px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:680px){
+  :root{--cw:148px;--ch:83px;}
+  .hero{padding:0 4% 15%;}
+  .hero-t{font-size:2.5rem;}
+  .feat{height:195px;}
+  .mb-body{padding:1rem 1.1rem 1.4rem;}
+  .mb-title{font-size:1.5rem;}
+}
+@media(max-width:420px){:root{--cw:128px;--ch:72px;}}
+
+/* ── TOAST ── */
+@keyframes fiu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<!-- ── YOUTUBE (hidden) ── -->
+<div style="position:fixed;width:1px;height:1px;overflow:hidden;bottom:0;right:0;opacity:0;pointer-events:none;">
+  <iframe id="ytf" width="1" height="1" src="" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+</div>
+
+<!-- ── MUSIC GATE ── -->
+<div class="gate" id="gate">
+  <div class="gate-logo">LOVFLIX</div>
+  <div class="gate-sub">Streaming Our Story</div>
+  <div class="gate-names">Bibin &amp; Ayang 🍓🍊</div>
+  <button class="gate-btn" onclick="startExp()">▶ &nbsp; Play Our Story</button>
+  <div class="gate-vol">🔊 Turn volume up before playing</div>
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">LOVFLIX<small>Bibin &amp; Ayang · Our Story</small></div>
+  <div class="nav-r">
+    <span class="nav-lnk">Home</span>
+    <span class="nav-lnk">Memories</span>
+    <div class="music-pill" onclick="toggleMute()" id="music-pill">
+      <div class="music-dot"></div>
+      <span class="music-lbl" id="music-lbl">Our Song ♪</span>
+    </div>
+    <div class="nav-av">🍓</div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero-sec">
+  <div class="hero-bg">
+    <div class="hero-ph"><div class="hero-ph-art">🍓🍊💗</div></div>
+    <div class="hero-di on" id="hero-di" style="background-image:url('photos/hero.jpg');"></div>
+    <div class="hero-fd"></div>
+  </div>
+  <div class="hero-c">
+    <div class="hero-ey">⭐ Featured — Bibin &amp; Ayang</div>
+    <h1 class="hero-t">BIBIN<br>&amp; <em>AYANG</em></h1>
+    <div class="hero-mt">
+      <span class="hero-match">💗 100% Match</span>
+      <span class="hero-tag">Nov 2024 – Now</span>
+      <span class="hero-tag">Romance</span>
+      <span class="hero-tag">True Story</span>
+    </div>
+    <p class="hero-desc">"From a Bumble match on November 7th to half a year of firsts — first dates, first Christmas, first Valentine's, first hospital visits, first fights, and a hundred reasons to stay. This is our story."</p>
+    <div class="hero-btns">
+      <button class="hbtn hbtn-p" onclick="openHeroModal()">▶ &nbsp;View Memory</button>
+      <button class="hbtn hbtn-i" onclick="openHeroModal()">ℹ &nbsp;More Info</button>
+    </div>
+  </div>
+  <button class="hero-chg" onclick="openHeroModal()">📷 Change Photo</button>
+</section>
+
+<!-- ── ROWS WRAP ── -->
+<div class="rows" id="rows">
+
+  <div style="padding:18px 4% 6px;">
+    <div class="genre-bar" id="genre-bar">
+      <button class="gp on" data-g="all">All</button>
+      <button class="gp" data-g="nov">November</button>
+      <button class="gp" data-g="dec">December</button>
+      <button class="gp" data-g="jan">January</button>
+      <button class="gp" data-g="feb">February</button>
+      <button class="gp" data-g="mar">March</button>
+      <button class="gp" data-g="apr">April</button>
+      <button class="gp" data-g="mayjun">May–June</button>
+
+    </div>
+  </div>
+
+  <!-- Continue Watching -->
+  <div class="row" id="row-cw">
+    <div class="row-hd"><span class="row-ttl">▶ Continue Watching — Bibin &amp; Ayang</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-cw')">‹</button><div class="sl-vp" id="sv-row-cw"><div class="sl-tr" id="st-row-cw"></div></div><button class="sl-arr r" onclick="sR('row-cw')">›</button></div>
+  </div>
+
+  <!-- November -->
+  <div class="row" id="row-nov">
+    <div class="row-hd"><span class="row-ttl">🍂 November — Where It All Began</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-nov')">‹</button><div class="sl-vp" id="sv-row-nov"><div class="sl-tr" id="st-row-nov"></div></div><button class="sl-arr r" onclick="sR('row-nov')">›</button></div>
+  </div>
+
+  <!-- December -->
+  <div class="row" id="row-dec">
+    <div class="row-hd"><span class="row-ttl">🎄 December — Firsts &amp; Festivities</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-dec')">‹</button><div class="sl-vp" id="sv-row-dec"><div class="sl-tr" id="st-row-dec"></div></div><button class="sl-arr r" onclick="sR('row-dec')">›</button></div>
+  </div>
+
+  <!-- Featured Banner -->
+  <div class="feat" id="feat" onclick="openFeatModal()">
+    <div class="feat-ph">🎄💝</div>
+    <div class="feat-di on" id="feat-di" style="background-image:url('photos/christmas.jpg');"></div>
+    <div class="feat-fd"></div>
+    <div class="feat-c">
+      <div class="feat-lbl">✨ Most Watched Memory</div>
+      <div class="feat-t">Christmas &amp;<br>The Big Question</div>
+      <div class="feat-d">"December 25 — her birthday, a movie, a rooftop, a first kiss, and the night everything officially began."</div>
+      <button class="feat-btn">▶ &nbsp;Open Memory</button>
+    </div>
+  </div>
+
+  <!-- January -->
+  <div class="row" id="row-jan">
+    <div class="row-hd"><span class="row-ttl">🌸 January — Moving In &amp; Growing Together</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-jan')">‹</button><div class="sl-vp" id="sv-row-jan"><div class="sl-tr" id="st-row-jan"></div></div><button class="sl-arr r" onclick="sR('row-jan')">›</button></div>
+  </div>
+
+  <!-- February -->
+  <div class="row" id="row-feb">
+    <div class="row-hd"><span class="row-ttl">💝 February — Valentine &amp; Care</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-feb')">‹</button><div class="sl-vp" id="sv-row-feb"><div class="sl-tr" id="st-row-feb"></div></div><button class="sl-arr r" onclick="sR('row-feb')">›</button></div>
+  </div>
+
+  <!-- March -->
+  <div class="row" id="row-mar">
+    <div class="row-hd"><span class="row-ttl">🌿 March — New Adventures</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-mar')">‹</button><div class="sl-vp" id="sv-row-mar"><div class="sl-tr" id="st-row-mar"></div></div><button class="sl-arr r" onclick="sR('row-mar')">›</button></div>
+  </div>
+
+  <!-- April -->
+  <div class="row" id="row-apr">
+    <div class="row-hd"><span class="row-ttl">🌼 April — Road Trips &amp; Routines</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-apr')">‹</button><div class="sl-vp" id="sv-row-apr"><div class="sl-tr" id="st-row-apr"></div></div><button class="sl-arr r" onclick="sR('row-apr')">›</button></div>
+  </div>
+
+  <!-- May–June -->
+  <div class="row" id="row-mayjun">
+    <div class="row-hd"><span class="row-ttl">✈️ May–June — Distance &amp; First Vacation</span><span class="row-exp">See all ›</span></div>
+    <div class="sl-wrap"><button class="sl-arr l" onclick="sL('row-mayjun')">‹</button><div class="sl-vp" id="sv-row-mayjun"><div class="sl-tr" id="st-row-mayjun"></div></div><button class="sl-arr r" onclick="sR('row-mayjun')">›</button></div>
+  </div><button class="sl-arr r" onclick="sR('row-romantic')">›</button></div>
+  </div><button class="sl-arr r" onclick="sR('row-funny')">›</button></div>
+  </div><button class="sl-arr r" onclick="sR('row-milestone')">›</button></div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-em">🍓🍊</div>
+  <div class="footer-t"><b>LOVFLIX</b> — Streaming exclusively for Ayang<br>Half a year of Bibin &amp; Ayang. A lifetime to go. 💗</div>
+</footer>
+
+<!-- ── TIP ── -->
+<div class="tip" id="tip">
+  <div class="tip-dot"></div>
+  <span>Hover any card → click <b style="color:#fff">📷</b> to add your photo</span>
+  <button class="tip-x" onclick="document.getElementById('tip').style.display='none'">✕</button>
+</div>
+
+<!-- ── MODAL ── -->
+<div class="mo" id="mo" onclick="closeMo(event)">
+  <div class="mb" id="mb">
+    <div class="mb-hero">
+      <div class="mb-ph" id="mb-ph"></div>
+      <img class="mb-hi" id="mb-hi" src="" alt="" style="display:none;">
+      <div class="mb-fd"></div>
+      <button class="mb-x" onclick="closeMoBtn()">✕</button>
+    </div>
+    <div class="mb-body">
+      <h2 class="mb-title" id="mb-title"></h2>
+      <div class="mb-meta">
+        <span class="mb-match" id="mb-match"></span>
+        <span class="mb-yr" id="mb-yr"></span>
+        <span class="mb-tag" id="mb-tag"></span>
+      </div>
+      <p class="mb-desc" id="mb-desc"></p>
+      <div class="mb-btns">
+        <button class="mbbtn mbbtn-p" id="mb-view">▶ &nbsp;View Full</button>
+        <button class="mbbtn mbbtn-l" onclick="doHeart()">♥ &nbsp;Love this</button>
+      </div>
+      <div class="mb-rep">
+        <div class="mb-rep-t">📷 Add / Replace Photo or Video</div>
+        <div class="url-row">
+          <input type="url" class="url-in" id="url-in" placeholder="e.g. photos/biny.jpg or photos/christmas.jpg">
+          <button class="url-go" id="url-go">Save</button>
+        </div>
+        <div class="url-hint">💡 For local photos: put your image in a <b>photos/</b> folder next to index.html, then type <b>photos/filename.jpg</b> here.<br>For GitHub Pages: commit the photos folder to your repo — paths like <b>photos/biny.jpg</b> will work automatically.<br>Photos save automatically in the browser.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════
+   MEMORIES DATA — real Bibin & Ayang story
+══════════════════════════════ */
+const MEM = [
+// ── CONTINUE WATCHING
+{id:'cw1',row:'cw',g:['milestone'],em:'💗',col:'#1a0814',prog:92,
+ t:'Still Writing Our Story',dt:'Now',tag:'Ongoing',match:'100%',
+ d:'This one never ends. Every day is a new scene. Currently streaming — no finale in sight.',img:'photos/hero.jpg'},
+{id:'cw2',row:'cw',g:['mayjun'],em:'🏨',col:'#1a0e08',prog:70,
+ t:'First Vacation Together — Jogja',dt:'June 2025',tag:'Jogja',match:'100%',
+ d:'Half a year in, their first real trip together. A city that now belongs to both of them.',img:'photos/jogja.jpg'},
+{id:'cw3',row:'cw',g:['apr'],em:'🎢',col:'#0a1420',prog:50,
+ t:'First Semi-Road Trip: Dufan',dt:'3 Apr',tag:'Amusement Park',match:'100%',
+ d:'First semi-road trip to Dufan. Screaming together on rides is a love language.',img:'photos/dufan.jpg'},
+
+// ── NOVEMBER
+{id:'n1',row:'nov',g:['nov','milestone'],em:'📱',col:'#1a0e28',
+ t:'We Matched',dt:'7 Nov',tag:'Bumble',match:'100%',
+ d:'November 7th. A Bumble match. Neither of them knew it yet, but everything started here.',img:'photos/we-matched.jpg'},
+{id:'n2',row:'nov',g:['nov','milestone'],em:'🍔',col:'#1a1008',
+ t:'First Date',dt:'15 Nov',tag:'Ishigawa → Cinema',match:'100%',
+ d:'Lunch at Ishigawa Burger, watched Now You See Me, dinner at Yakiniku Lite — and the first time they held hands.',img:'photos/first-date.jpg'},
+
+// ── DECEMBER
+{id:'d1',row:'dec',g:['dec','milestone'],em:'🧸',col:'#1a0e08',
+ t:'Biny Is Born',dt:'7 Dec',tag:'Puri Mall',match:'98%',
+ d:'Won at the claw machine at Puri Mall. Named him Biny on the spot. He\'s been with them ever since.',img:'photos/biny.jpg'},
+{id:'d2',row:'dec',g:['dec','milestone'],em:'📸',col:'#0e1020',
+ t:'First Photobooth',dt:'Dec',tag:'Photobooth',match:'99%',
+ d:'Their first photobooth together. Four frames of them, just like that.',img:'photos/photobooth-1.jpg'},
+{id:'d3',row:'dec',g:['dec','milestone'],em:'🎂',col:'#1e0812',
+ t:'Her Birthday — The Big Question',dt:'25 Dec',tag:'MILESTONE',match:'100%',
+ d:'Two Fat Panda movie. He asked her to be his girlfriend at Hotel Vivere. First kiss, rooftop dinner, Netflix & chill. The night everything officially began.',img:'photos/birthday-kiss.jpg'},
+{id:'d4',row:'dec',g:['dec','milestone'],em:'🎆',col:'#0a0a1e',
+ t:'New Year\'s Eve Together',dt:'31 Dec',tag:'M-Town Apartment',match:'100%',
+ d:'Stayed in all night at the apartment. Ayam geprek, cooked ramen, card games and Netflix. First New Year together.',img:'photos/new-year.jpg'},
+
+// ── JANUARY
+{id:'j1',row:'jan',g:['jan'],em:'🍕',col:'#0a0e18',
+ t:'Pizza Making Class',dt:'16 Jan',tag:'Pizza Marzano',match:'98%',
+ d:'AEON BSD date, Popolamama pasta, pizza-making class at Pizza Marzano. Turns out she\'s a natural.',img:'photos/pizza-class.jpg'},
+{id:'j2',row:'jan',g:['jan'],em:'⛸️',col:'#081418',
+ t:'Ice Skating Date',dt:'17 Jan',tag:'Active Day',match:'97%',
+ d:'Breakfast choipan & bakmi, lunch sei sapi, ice skating, dinner at Sari Ratu. One of them fell. We won\'t say who.',img:'photos/ice-skating-1.jpg'},
+{id:'j3',row:'jan',g:['jan','milestone'],em:'📸',col:'#1a0e14',
+ t:'Second Photobooth',dt:'Jan',tag:'Photobooth',match:'99%',
+ d:'Second photobooth together. Getting good at this.',img:'photos/photobooth-2.jpg'},
+
+// ── FEBRUARY
+{id:'f1',row:'feb',g:['feb','milestone'],em:'🏥',col:'#0a1014',
+ t:'She Was Hospitalized',dt:'26 Jan–1 Feb',tag:'Hospital',match:'100%',
+ d:'She was hospitalized. He visited, brought a bouquet, met her dad, aunt and uncle. Played cards at the hospital. Love that shows up in hospitals is real love.',img:'photos/hospital.jpg'},
+{id:'f2',row:'feb',g:['feb','milestone'],em:'💝',col:'#1e0812',
+ t:'First Valentine Together',dt:'14 Feb',tag:'MILESTONE',match:'100%',
+ d:'He decorated the whole room, cooked Valentine\'s lunch, prepared dinner. Every detail placed with intention. She walked in and felt chosen.',img:'photos/valentine.jpg'},
+{id:'f3',row:'feb',g:['feb'],em:'⛸️',col:'#081418',
+ t:'Roller Skate Date',dt:'7 Feb',tag:'Cyberink',match:'97%',
+ d:'Roller skating at Cyberink, lunch at Ceci et Cela. They\'re basically professional skaters now.',img:'photos/roller-skate.jpg'},
+{id:'f4',row:'feb',g:['feb'],em:'🌿',col:'#081410',
+ t:'Terrarium Date',dt:'15 Feb',tag:'Last Date Before LDR',match:'99%',
+ d:'Terrarium date — the last date before he went to Thailand for a week. A green, living reminder of them.',img:'photos/terrarium.jpg'},
+
+// ── MARCH
+{id:'m1',row:'mar',g:['mar','milestone'],em:'🏋️',col:'#0a0e10',
+ t:'Gym Together',dt:'1 Mar',tag:'First Time',match:'99%',
+ d:'First time going to the gym together. Power couple energy activated.',img:'photos/gym.jpg'},
+{id:'m2',row:'mar',g:['mar'],em:'🤖',col:'#0a1420',
+ t:'Scooter & Robots',dt:'7 Mar',tag:'Batavia PIK',match:'99%',
+ d:'Rode scooters together at Batavia PIK, saw robots, ate katsudon. One of those effortlessly perfect days.',img:'photos/scooter-robots.jpg'},
+{id:'m3',row:'mar',g:['mar'],em:'🏎️',col:'#141008',
+ t:'Go Kart',dt:'24 Mar',tag:'Fun World',match:'98%',
+ d:'Go Kart and Fun World, mini train kart, Little Ollie. Full day of speed and laughter.',img:'photos/go-kart.jpg'},
+{id:'m4',row:'mar',g:['mar','milestone'],em:'📸',col:'#1a0814',
+ t:'Third Photobooth',dt:'Mar',tag:'Photobooth',match:'99%',
+ d:'Third photobooth. A tradition at this point.',img:'photos/photobooth-3.jpg'},
+
+// ── APRIL
+{id:'a1',row:'apr',g:['apr','milestone'],em:'🎢',col:'#0a1420',
+ t:'First Semi-Road Trip: Dufan',dt:'3 Apr',tag:'Amusement Park',match:'100%',
+ d:'First semi-road trip to Dufan. Screaming together on rides is a love language.',img:'photos/dufan.jpg'},
+{id:'a2',row:'apr',g:['apr'],em:'🍣',col:'#140a0a',
+ t:'Sushiro Date',dt:'4 Apr',tag:'Pondok Indah Mall',match:'98%',
+ d:'Long trip to Pondok Indah Mall just for Sushiro. Worth every minute of the drive.',img:'photos/sushiro.jpg'},
+
+// ── MAY–JUNE
+{id:'mj1',row:'mayjun',g:['mayjun'],em:'⛸️',col:'#081418',
+ t:'Ice Skating Again',dt:'June',tag:'Mall TA',match:'100%',
+ d:'Ice skating again, this time at Mall TA. Old habit, new chapter.',img:'photos/ice-skating-2.jpg'},
+{id:'mj2',row:'mayjun',g:['mayjun','milestone'],em:'📸',col:'#0e1020',
+ t:'Another Photobooth',dt:'May–June',tag:'Photobooth',match:'99%',
+ d:'Another photobooth strip. Four more frames of them.',img:'photos/photobooth-4.jpg'},
+{id:'mj3',row:'mayjun',g:['mayjun','milestone'],em:'🏨',col:'#1a0e08',
+ t:'First Trip Together — Jogja',dt:'June 2025',tag:'MILESTONE',match:'100%',
+ d:'Their first real vacation together — Jogja. Half a year and a whole new city explored side by side. This is what they were building toward.',img:'photos/jogja.jpg'},
+]
+
+/* ── STATE ── */
+let curCard = null;
+let muted = false;
+const imgs = JSON.parse(localStorage.getItem('lovflix2_imgs')||'{}');
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded',()=>{
+  // Clean up any stale empty localStorage entries that would block hardcoded photos
+  Object.keys(imgs).forEach(k=>{ if(!imgs[k]) delete imgs[k]; });
+  buildAll();
+  initNav();
+  loadImgs();
+  initGenre();
+});
+
+function buildAll(){
+  const rows = {};
+  MEM.forEach(m=>{ rows[m.row]=rows[m.row]||[]; rows[m.row].push(m); });
+  Object.entries(rows).forEach(([r,ms])=>{
+    const tr = document.getElementById('st-row-'+r);
+    if(!tr) return;
+    ms.forEach(m=>tr.appendChild(mkCard(m, r==='milestone')));
+  });
+}
+
+function mkCard(m, isT10=false){
+  const d = document.createElement('div');
+  d.className = 'card'+(isT10?' card-t10':'');
+  d.dataset.id = m.id;
+  // Use localStorage override first, then hardcoded img path
+  const si = imgs[m.id] || m.img || '';
+  const thumb = si
+    ? `<img class="card-img" src="${si}" alt="${m.t}" loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+       <div class="card-ph" style="display:none;background:${m.col||'#1a1a1a'}">
+         <div class="card-ph-em">${m.em||'💗'}</div>
+         <div class="card-ph-dt">${m.dt||''}</div>
+       </div>`
+    : `<div class="card-ph" style="background:${m.col||'#1a1a1a'}">
+        <div class="card-ph-em">${m.em||'💗'}</div>
+        <div class="card-ph-dt">${m.dt||''}</div>
+        <div class="card-ph-lbl">Add photo</div>
+       </div>`;
+  const prog = m.prog
+    ? `<div class="prog-bar"><div class="prog-fill" style="width:${m.prog}%"></div></div>` : '';
+  const t10n = isT10 ? `<div class="t10-n">${m.num||''}</div>` : '';
+  d.innerHTML = `${t10n}
+    <div class="card-th">${thumb}${prog}</div>
+    <div class="card-pnl">
+      <div class="cpb-row">
+        <button class="cpb play" onclick="openMo(event,'${m.id}')">▶</button>
+        <button class="cpb hrt" onclick="doHeart2(event)">♥</button>
+        <button class="cpb" onclick="openMo(event,'${m.id}')">⋮</button>
+      </div>
+      <div class="cpb-t">${m.t}</div>
+      <div class="cpb-mt"><span class="m">${m.match} Match</span><span>${m.dt}</span></div>
+      <div class="cpb-d">${m.d}</div>
+    </div>`;
+  d.addEventListener('click',e=>{
+    if(!e.target.closest('.cpb')) openMo(e, m.id);
+  });
+  return d;
+}
+
+/* ── MODAL ── */
+function openMo(e, id){
+  if(e) e.stopPropagation();
+  const m = MEM.find(x=>x.id===id);
+  if(!m) return;
+  curCard=m;
+  const si=imgs[m.id]||m.img||'';
+  const ph=document.getElementById('mb-ph'), hi=document.getElementById('mb-hi');
+  if(si){hi.src=si;hi.style.display='block';ph.style.display='none';}
+  else{hi.style.display='none';ph.style.display='flex';ph.textContent=m.em||'💗';ph.style.background=`linear-gradient(135deg,${m.col||'#1a0814'},#0a0a14)`;}
+  document.getElementById('mb-title').textContent=m.t;
+  document.getElementById('mb-match').textContent='💗 '+m.match+' Match';
+  document.getElementById('mb-yr').textContent=m.dt;
+  document.getElementById('mb-tag').textContent=m.tag;
+  document.getElementById('mb-desc').textContent=m.d;
+  document.getElementById('url-in').value=si||'';
+  document.getElementById('url-go').onclick=()=>saveImg(m.id);
+  document.getElementById('mb-view').onclick=()=>{const u=imgs[m.id]||m.img||'';if(u)window.open(u,'_blank');else alert('Add a photo URL first! 📷');};
+  document.getElementById('mo').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function openHeroModal(){
+  curCard={id:'hero',t:'Bibin & Ayang',em:'💗',col:'#1a0814',match:'100%',dt:'Nov 2024–Now',tag:'Our Story',d:'From a Bumble match on November 7th to half a year of firsts. This is our story.',img:imgs['hero']||''};
+  const si=imgs['hero']||'';
+  const ph=document.getElementById('mb-ph'),hi=document.getElementById('mb-hi');
+  if(si){hi.src=si;hi.style.display='block';ph.style.display='none';}
+  else{hi.style.display='none';ph.style.display='flex';ph.textContent='💗';ph.style.background='linear-gradient(135deg,#1a0814,#0a0a14)';}
+  document.getElementById('mb-title').textContent='Bibin & Ayang';
+  document.getElementById('mb-match').textContent='💗 100% Match';
+  document.getElementById('mb-yr').textContent='Nov 2024–Now';
+  document.getElementById('mb-tag').textContent='Our Story';
+  document.getElementById('mb-desc').textContent='From a Bumble match on November 7th to half a year of firsts — first dates, first Christmas, first Valentine\'s, first hospital visits, first fights, and a hundred reasons to stay.';
+  document.getElementById('url-in').value=si||'';
+  document.getElementById('url-go').onclick=()=>saveHeroImg();
+  document.getElementById('mb-view').onclick=()=>{const u=imgs['hero']||'';if(u)window.open(u,'_blank');};
+  document.getElementById('mo').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function openFeatModal(){
+  const si=imgs['feat']||'';
+  const ph=document.getElementById('mb-ph'),hi=document.getElementById('mb-hi');
+  if(si){hi.src=si;hi.style.display='block';ph.style.display='none';}
+  else{hi.style.display='none';ph.style.display='flex';ph.textContent='🎄💝';ph.style.background='linear-gradient(135deg,#1a0814,#0a0a14)';}
+  document.getElementById('mb-title').textContent='Christmas & The Big Question';
+  document.getElementById('mb-match').textContent='💗 100% Match';
+  document.getElementById('mb-yr').textContent='25 Dec';
+  document.getElementById('mb-tag').textContent='MILESTONE';
+  document.getElementById('mb-desc').textContent='December 25 — her birthday, Two Fat Panda movie, Hotel Vivere rooftop, the big question, first kiss, rooftop dinner, Netflix & chill. The night everything officially began.';
+  document.getElementById('url-in').value=si||'';
+  document.getElementById('url-go').onclick=()=>saveFeatImg();
+  document.getElementById('mb-view').onclick=()=>{const u=imgs['feat']||'';if(u)window.open(u,'_blank');};
+  document.getElementById('mo').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMo(e){if(e&&e.target!==document.getElementById('mo'))return;closeMoBtn();}
+function closeMoBtn(){document.getElementById('mo').classList.remove('open');document.body.style.overflow='';curCard=null;}
+
+/* ── IMAGE SAVE ── */
+function saveImg(id){
+  const u=document.getElementById('url-in').value.trim();if(!u)return;
+  imgs[id]=u;persist();refreshCard(id,u);
+  // Also update the MEM entry so modal shows correct image
+  const mem=MEM.find(x=>x.id===id);if(mem)mem.img=u;
+  toast('Photo saved 💗');
+}
+function saveHeroImg(){
+  const u=document.getElementById('url-in').value.trim();if(!u)return;
+  imgs['hero']=u;persist();
+  const di=document.getElementById('hero-di');di.style.backgroundImage=`url('${u}')`;di.classList.add('on');
+  toast('Hero photo saved 💗');
+}
+function saveFeatImg(){
+  const u=document.getElementById('url-in').value.trim();if(!u)return;
+  imgs['feat']=u;persist();
+  const di=document.getElementById('feat-di');di.style.backgroundImage=`url('${u}')`;di.classList.add('on');
+  toast('Featured photo saved 💗');
+}
+function persist(){try{localStorage.setItem('lovflix2_imgs',JSON.stringify(imgs));}catch(e){}}
+function refreshCard(id,url){
+  document.querySelectorAll(`.card[data-id="${id}"]`).forEach(card=>{
+    const th=card.querySelector('.card-th');if(!th)return;
+    const prog=th.querySelector('.prog-bar');
+    th.innerHTML=`<img class="card-img" src="${url}" alt="" loading="lazy"
+      onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex');">
+      <div class="card-ph" style="display:none;background:#1a1a1a"><div class="card-ph-em">💗</div></div>`;
+    if(prog)th.appendChild(prog);
+  });
+}
+function loadImgs(){
+  // Show hero and featured banner (already hardcoded in style)
+  const heroEl=document.getElementById('hero-di');
+  if(heroEl) heroEl.classList.add('on');
+  const featEl=document.getElementById('feat-di');
+  if(featEl) featEl.classList.add('on');
+  // Only apply localStorage overrides if they are non-empty and not stale
+  Object.entries(imgs).forEach(([id,url])=>{
+    if(!url) return; // skip empty entries
+    if(id==='hero'){const di=document.getElementById('hero-di');di.style.backgroundImage=`url('${url}')`;di.classList.add('on');}
+    else if(id==='feat'){const di=document.getElementById('feat-di');di.style.backgroundImage=`url('${url}')`;di.classList.add('on');}
+    else refreshCard(id,url);
+  });
+}
+
+/* ── TOAST ── */
+function toast(msg){
+  const t=document.createElement('div');
+  t.textContent='✓ '+msg;
+  t.style.cssText='position:fixed;bottom:68px;right:18px;background:#46d369;color:#000;padding:8px 16px;border-radius:4px;font-size:0.8rem;font-weight:600;z-index:3000;animation:fiu 0.3s ease;';
+  document.body.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity 0.3s';setTimeout(()=>t.remove(),300);},2500);
+}
+function doHeart(){toast('Added to Favorites 💗');}
+function doHeart2(e){e.stopPropagation();const btn=e.currentTarget;btn.style.color='#ff4d8a';btn.style.borderColor='#ff4d8a';toast('Favorited 💗');}
+
+/* ── SLIDER ── */
+function sL(r){const sv=document.getElementById('sv-'+r);if(sv)sv.scrollBy({left:-sv.offsetWidth*0.8,behavior:'smooth'});}
+function sR(r){const sv=document.getElementById('sv-'+r);if(sv)sv.scrollBy({left:sv.offsetWidth*0.8,behavior:'smooth'});}
+
+/* ── NAV SCROLL ── */
+function initNav(){window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});}
+
+/* ── GENRE FILTER ── */
+function initGenre(){
+  document.querySelectorAll('.gp').forEach(p=>{
+    p.addEventListener('click',()=>{
+      document.querySelectorAll('.gp').forEach(x=>x.classList.remove('on'));
+      p.classList.add('on');
+      filterRows(p.dataset.g);
+    });
+  });
+}
+const ALL_ROWS=['row-cw','row-nov','row-dec','row-jan','row-feb','row-mar','row-apr','row-mayjun'];
+const GENRE_ROWS={
+  all:ALL_ROWS,
+  nov:['row-nov'],dec:['row-dec'],jan:['row-jan'],feb:['row-feb'],
+  mar:['row-mar'],apr:['row-apr'],mayjun:['row-mayjun'],
+};
+function filterRows(g){
+  const show=GENRE_ROWS[g]||ALL_ROWS;
+  ALL_ROWS.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.style.display=(g==='all'||show.includes(id))?'block':'none';
+  });
+  if(g!=='all')document.getElementById('row-cw').style.display='none';
+  // hide featured banner if not all/dec/milestone
+  const feat=document.getElementById('feat');
+  if(feat)feat.style.display=(g==='all'||g==='dec'||g==='milestone'||g==='romantic')?'block':'none';
+}
+
+/* ── MUSIC + GATE ── */
+function startExp(){
+  const gate=document.getElementById('gate');
+  gate.style.transition='opacity 0.8s';gate.style.opacity='0';
+  setTimeout(()=>gate.style.display='none',800);
+  // Start YouTube — song: 08Ndzf5-HxI
+  document.getElementById('ytf').src=
+    'https://www.youtube.com/embed/08Ndzf5-HxI?autoplay=1&loop=1&playlist=08Ndzf5-HxI&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&mute=0';
+  document.getElementById('music-pill').style.display='flex';
+}
+function toggleMute(){
+  muted=!muted;
+  document.getElementById('ytf').src=
+    `https://www.youtube.com/embed/08Ndzf5-HxI?autoplay=1&loop=1&playlist=08Ndzf5-HxI&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&mute=${muted?1:0}`;
+  document.getElementById('music-lbl').textContent=muted?'Muted 🔇':'Our Song ♪';
+}
+
+/* CSS anim */
+const sty=document.createElement('style');
+sty.textContent='@keyframes fiu{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}';
+document.head.appendChild(sty);
+</script>
+</body>
+</html>
